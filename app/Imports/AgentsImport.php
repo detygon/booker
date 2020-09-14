@@ -22,8 +22,8 @@ class AgentsImport implements ToModel, WithHeadingRow
 
         return new Agent([
             'code' => $row['identifiant'],
-            'phone_number' => $row["telephone_recent"],
-            'voting_station' => $row["localite"],
+            'phone_number' => $row["telephone"] ?? '',
+            'voting_station' => $row["bv"],
             'first_name' => implode(' ', array_slice($nameParts, 1)),
             'last_name' => $nameParts[0]
         ]);
