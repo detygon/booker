@@ -8,7 +8,7 @@
             <h1 class="text-4xl lg:text-5xl text-blue-900 leading-none mb-4 font-black">Bienvenue</h1>
             <p class="lg:text-lg mb-4 sm:mb-12 text-blue-900">Vous êtes convié à verifier vos informations
                 d'observateur ici.</p>
-            <a href="#"
+            <a href="{{ route('verification') }}"
                 class="font-semibold text-lg bg-purple-600 hover:bg-blue-400 text-white py-3 px-12 rounded-full">
                 Verifier mes informations
             </a>
