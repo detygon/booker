@@ -17,12 +17,9 @@
                         <div class="flex md:flex-row flex-col items-center">
                             <div class="flex-auto">
                                 <div class="md:hidden text-sm font-normal uppercase pt-3 pl-3 text-gray-500"><span
-                                        class="font-black">Etape 1</span> - Idea</div>
-                                <div class="p-3 text-3xl text-gray-800 font">Find your best idea</div>
-                                <div class="px-3 pb-6">Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                                    Aperiam facilis, voluptates error alias dolorem praesentium sit soluta iure
-                                    incidunt labore explicabo eaque, quia architecto veritatis dolores, enim
-                                    consequatur nihil ipsum.</div>
+                                        class="font-black">Etape 1</div>
+                                <div class="p-3 text-3xl text-gray-800 font">Retrouver sa fiche</div>
+                                <div class="px-3 pb-6">Rendez-vous dans le menu "Verification" et en.</div>
                             </div>
                             <div class="md:w-96 w-full p-5"><img
                                     src="https://image.flaticon.com/icons/svg/1330/1330216.svg" alt="step 1"

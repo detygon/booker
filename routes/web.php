@@ -1,6 +1,7 @@
 <?php
 
-use App\Http\Controllers\VerificationController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\ExportAgents;
 use App\Http\Livewire\Verification;
 use Illuminate\Support\Facades\Route;
 
@@ -25,8 +26,6 @@ Route::get('/comment-ca-marche', function () {
 
 Route::get('/verification', Verification::class)->name('verification');
 
-Route::post('/save', 'VerificationController@save')->name('save');
+Route::get('/export', ExportAgents::class)->name('export.pdf.agents');
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    return view('dashboard');
-})->name('dashboard');
+Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', DashboardController::class)->name('dashboard');

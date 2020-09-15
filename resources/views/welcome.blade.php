@@ -15,4 +15,7 @@
         </div>
         <x-svg.skyline></x-svg.skyline>
     </div>
+    <div class="bg-gray-100 py-4 px-4 flex justify-end">
+        <a href="{{ route('login') }}">Accéder à l'administration</a>
+    </div>
 </x-guest-layout>

@@ -4,28 +4,27 @@ namespace App\Imports;
 
 use App\Models\Agent;
 use Maatwebsite\Excel\Concerns\Importable;
+use Maatwebsite\Excel\Concerns\OnEachRow;
 use Maatwebsite\Excel\Concerns\ToModel;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
+use Maatwebsite\Excel\Row;
 
-class AgentsImport implements ToModel, WithHeadingRow
+class AgentsImport implements WithHeadingRow, OnEachRow
 {
     use Importable;
 
-    /**
-    * @param array $row
-    *
-    * @return \Illuminate\Database\Eloquent\Model|null
-    */
-    public function model(array $row)
+    public function onRow(Row $row)
     {
-        $nameParts = explode(' ', $row['nom']);
+        $data = $row->toArray();
+        $nameParts = explode(' ', $data['nom']);
 
-        return new Agent([
-            'code' => $row['identifiant'],
-            'phone_number' => $row["telephone"] ?? '',
-            'voting_station' => $row["bv"],
-            'first_name' => implode(' ', array_slice($nameParts, 1)),
-            'last_name' => $nameParts[0]
+        return Agent::firstOrCreate(['code' => $data['identifiant']], [
+            'phone_number' => $data["telephone"] ?? '',
+            'voting_station' => $data["bv"],
+            'first_name' => strtoupper(implode(' ', array_slice($nameParts, 1))),
+            'last_name' => strtoupper($nameParts[0]),
+            'verified' => false,
+            'verified_at' => now(),
         ]);
     }
 }

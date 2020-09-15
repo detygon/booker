@@ -1,14 +1,14 @@
 @if ($loadingIndicator)
-    <tbody wire:loading>
-        <tr><td colspan="{{ collect($columns)->count() }}">@lang('laravel-livewire-tables::strings.loading')</td></tr>
+    <tbody wire:loading class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800 text-sm">
+        <tr><td colspan="{{ collect($columns)->count() }}" class="text-center">@lang('laravel-livewire-tables::strings.loading')</td></tr>
     </tbody>
 
-    <tbody wire:loading.remove>
+    <tbody wire:loading.remove class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800 text-sm">
 @else
-    <tbody>
+    <tbody class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800 text-sm">
 @endif
     @if($models->isEmpty())
-        <tr><td colspan="{{ collect($columns)->count() }}">@lang('laravel-livewire-tables::strings.no_results')</td></tr>
+        <tr><td colspan="{{ collect($columns)->count() }}" class="text-center">@lang('laravel-livewire-tables::strings.no_results')</td></tr>
     @else
         @foreach($models as $model)
             <tr
@@ -29,7 +29,7 @@
                 @foreach($columns as $column)
                     @if (!$column->isHidden())
                         <td
-                            class="{{ $this->setTableDataClass($column->attribute, Arr::get($model->toArray(), $column->attribute)) }}"
+                            class="px-4 py-3 {{ $this->setTableDataClass($column->attribute, Arr::get($model->toArray(), $column->attribute)) }}"
                             id="{{ $this->setTableDataId($column->attribute, Arr::get($model->toArray(), $column->attribute)) }}"
                             @foreach ($this->setTableDataAttributes($column->attribute, Arr::get($model->toArray(), $column->attribute)) as $key => $value)
                                 {{ $key }}="{{ $value }}"

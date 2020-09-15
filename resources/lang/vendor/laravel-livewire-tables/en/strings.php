@@ -1,11 +1,11 @@
 <?php
 
 return [
-    'clear' => 'Clear',
-    'loading' => 'Loading...',
-    'no_results' => 'There are no results to display for this query.',
-    'offline' => 'You are not currently connected to the internet.',
-    'per_page' => 'Per Page',
-    'results' => 'Showing :first to :last out of :total results',
-    'search' => 'Search...',
+    'clear' => 'Effacer',
+    'loading' => 'Chargement...',
+    'no_results' => 'Il n\'y a aucun resultat pour cette recherche.',
+    'offline' => 'Vous n\'êtes pas connecté à Internet.',
+    'per_page' => 'Par page',
+    'results' => ':first à :last affichés sur :total résultats',
+    'search' => 'Rechercher...',
 ];

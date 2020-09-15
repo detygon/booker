@@ -22,6 +22,7 @@ class Verification extends Component
         'first_name' => '',
         'last_name' => '',
         'voting_station' => '',
+        'verified' => false
     ];
 
     protected $rules = [
@@ -30,6 +31,7 @@ class Verification extends Component
         'state.first_name' => ['required', 'min:3'],
         'state.last_name' => ['required', 'min:3'],
         'state.voting_station' => ['required'],
+        'state.verified' => ['accepted']
     ];
 
     protected $queryString = ['code' => ['except' => ''],];
@@ -39,7 +41,7 @@ class Verification extends Component
         $this->agent = Agent::query()->whereCode($request->input('code'))->first();
 
         if ($this->agent) {
-            $this->setInformations($this->agent);
+            $this->setInformations();
         }
     }
 
@@ -53,26 +55,41 @@ class Verification extends Component
         $this->agent = Agent::query()->whereCode($this->code)->first();
 
         if ($this->agent) {
-            $this->setInformations($this->agent);
+            $this->setInformations();
         }
     }
 
     public function updateProfileInformation()
     {
         $this->resetErrorBag();
+        $this->validate(null, [
+            'state.verified' => 'Vous devez confirmer avant de valider.',
+            'photo' => 'Vous devez choisir un photo'
+        ]);
 
-        $this->validate();
         $this->agent->updateProfilePhoto($this->photo);
         $this->agent->update($this->state);
 
         $this->emit('saved');
+        $this->reset();
+        $this->state = [
+            'phone_number' => '',
+            'first_name' => '',
+            'last_name' => '',
+            'voting_station' => '',
+            'verified' => false
+        ];
     }
 
-    private function setInformations(Agent $agent)
+    private function setInformations()
     {
-        $this->state['phone_number'] = $agent->phone_number;
-        $this->state['first_name'] = $agent->first_name;
-        $this->state['last_name'] = $agent->last_name;
-        $this->state['voting_station'] = $agent->voting_station;
+        $this->state = array_filter($this->agent->withoutRelations()->toArray(), function ($key) {
+            return in_array($key, [
+                'phone_number',
+                'first_name',
+                'last_name',
+                'voting_station',
+            ]);
+        }, ARRAY_FILTER_USE_KEY);
     }
 }

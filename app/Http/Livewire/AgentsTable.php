@@ -17,8 +17,15 @@ class AgentsTable extends TableComponent
     public function columns(): array
     {
         return [
-            Column::make('Identifiant', 'code'),
-            Column::make('Nom', 'name')->customAttribute(),
+            Column::make('Identifiant', 'code')->sortable()->searchable(),
+            Column::make('Nom', 'name')->customAttribute()->searchable(function ($builder, $term) {
+                return $builder
+                        ->orWhere('first_name', 'like', '%' . $term . '%')
+                        ->orWhere('last_name', 'like', '%' . $term . '%');
+            }),
+            Column::make('Bureau de vote', 'voting_station')->searchable(),
+            Column::make('Téléphone', 'phone_number'),
+            Column::make('Statut')->view('partials.agents._table-actions', 'agent'),
         ];
     }
 }
