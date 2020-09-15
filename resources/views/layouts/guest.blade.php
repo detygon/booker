@@ -30,14 +30,10 @@
                 <div class="flex items-center">
                     <nav class="text-purple-900 text-lg hidden lg:flex items-center">
                         <a href="{{ route('landing') }}" class="py-2 px-8 flex hover:text-purple-700">
-                            Acceuil
+                            Accueil
                         </a>
-                        {{-- <a href="{{ route('instructions') }}"
-                            class="py-2 px-8 flex hover:text-purple-700">
-                            Comment ça marche
-                        </a> --}}
                         <a href="{{ route('verification') }}" class="py-2 px-8 flex hover:text-purple-700">
-                            Verification
+                            Vérification
                         </a>
                     </nav>
                 </div>

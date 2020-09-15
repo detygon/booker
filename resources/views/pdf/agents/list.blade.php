@@ -77,7 +77,7 @@
         @foreach ($agents as $agent)
             <div class="clearfix item">
                 <div class="photo-container">
-                    <img src="{{ $agent->profile_photo_path ? storage_path('app/public/' . $agent->profile_photo_path) : storage_path('app/public/avatar.jpg') }}"
+                    <img src="{{ \Image::make($agent->profile_photo_path ? storage_path('app/public/' . $agent->profile_photo_path) : storage_path('app/public/avatar.jpg'))->encode('data-url') }}"
                         alt="{{ $agent->name }}" class="photo">
                 </div>
                 <div class="agent-details">

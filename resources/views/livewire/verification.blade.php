@@ -52,13 +52,13 @@
                             <!-- Profile Photo File Input -->
                             <input type="file" class="hidden" wire:model="photo" x-ref="photo"
                                 x-on:change="
-                                                                                                                                                                                                photoName = $refs.photo.files[0].name;
-                                                                                                                                                                                                const reader = new FileReader();
-                                                                                                                                                                                                reader.onload = (e) => {
-                                                                                                                                                                                                    photoPreview = e.target.result;
-                                                                                                                                                                                                };
-                                                                                                                                                                                                reader.readAsDataURL($refs.photo.files[0]);
-                                                                                                                                                                                        " />
+                                                                                                                                                                                                                        photoName = $refs.photo.files[0].name;
+                                                                                                                                                                                                                        const reader = new FileReader();
+                                                                                                                                                                                                                        reader.onload = (e) => {
+                                                                                                                                                                                                                            photoPreview = e.target.result;
+                                                                                                                                                                                                                        };
+                                                                                                                                                                                                                        reader.readAsDataURL($refs.photo.files[0]);
+                                                                                                                                                                                                                " />
 
                             <x-jet-label for="photo" value="Photo" />
 
@@ -134,11 +134,11 @@
                     </x-jet-action-message>
 
                     <x-jet-action-message class="mr-3" on="saved">
-                        {{ __('Entregistré.') }}
+                        {{ __('Enregistré.') }}
                     </x-jet-action-message>
 
                     <x-jet-button class="bg-indigo-600 hover:bg-blue-400">
-                        {{ __('Entregister') }}
+                        {{ __('Enregister') }}
                     </x-jet-button>
                 </x-slot>
             </x-jet-form-section>
