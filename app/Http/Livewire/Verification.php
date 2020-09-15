@@ -62,15 +62,13 @@ class Verification extends Component
     public function updateProfileInformation()
     {
         $this->resetErrorBag();
-        $this->validate(null, [
-            'state.verified' => 'Vous devez confirmer avant de valider.',
-            'photo' => 'Vous devez choisir un photo'
-        ]);
+        $this->validate();
 
         $this->agent->updateProfilePhoto($this->photo);
         $this->agent->update($this->state);
 
         $this->emit('saved');
+
         $this->reset();
         $this->state = [
             'phone_number' => '',

@@ -52,13 +52,13 @@
                             <!-- Profile Photo File Input -->
                             <input type="file" class="hidden" wire:model="photo" x-ref="photo"
                                 x-on:change="
-                                                                                                                                                                                                                        photoName = $refs.photo.files[0].name;
-                                                                                                                                                                                                                        const reader = new FileReader();
-                                                                                                                                                                                                                        reader.onload = (e) => {
-                                                                                                                                                                                                                            photoPreview = e.target.result;
-                                                                                                                                                                                                                        };
-                                                                                                                                                                                                                        reader.readAsDataURL($refs.photo.files[0]);
-                                                                                                                                                                                                                " />
+                                                                                                                                                                                                                                photoName = $refs.photo.files[0].name;
+                                                                                                                                                                                                                                const reader = new FileReader();
+                                                                                                                                                                                                                                reader.onload = (e) => {
+                                                                                                                                                                                                                                    photoPreview = e.target.result;
+                                                                                                                                                                                                                                };
+                                                                                                                                                                                                                                reader.readAsDataURL($refs.photo.files[0]);
+                                                                                                                                                                                                                        " />
 
                             <x-jet-label for="photo" value="Photo" />
 
@@ -88,7 +88,7 @@
                         <x-jet-label for="last_name" value="Nom" />
                         <x-jet-input id="last_name" type="text" class="mt-1 block w-full" wire:model.defer="state.last_name"
                             autocomplete="last_name" />
-                        <x-jet-input-error for="last_name" class="mt-2" />
+                        <x-jet-input-error for="state.last_name" class="mt-2" />
                     </div>
 
                     <!-- Prénoms -->
@@ -96,7 +96,7 @@
                         <x-jet-label for="first_name" value="Prénoms" />
                         <x-jet-input id="first_name" type="text" class="mt-1 block w-full"
                             wire:model.defer="state.first_name" autocomplete="first_name" />
-                        <x-jet-input-error for="first_name" class="mt-2" />
+                        <x-jet-input-error for="state.first_name" class="mt-2" />
                     </div>
 
                     <!-- Numéro de télephone -->
@@ -104,7 +104,7 @@
                         <x-jet-label for="phone_number" value="Numéro de télephone" />
                         <x-jet-input id="phone_number" type="text" class="mt-1 block w-full"
                             wire:model.defer="state.phone_number" />
-                        <x-jet-input-error for="phone_number" class="mt-2" />
+                        <x-jet-input-error for="state.phone_number" class="mt-2" />
                     </div>
 
                     <!-- Bureau de vote -->
@@ -112,7 +112,7 @@
                         <x-jet-label for="voting_station" value="Bureau de vote" />
                         <x-jet-input id="voting_station" type="text" class="mt-1 block w-full bg-gray-200"
                             wire:model.defer="state.voting_station" readonly />
-                        <x-jet-input-error for="voting_station" class="mt-2" />
+                        <x-jet-input-error for="state.voting_station" class="mt-2" />
                     </div>
 
                     <!-- Verification -->
@@ -124,7 +124,7 @@
                                 Je confirmes avoir lu et corrigé (si nécéssaire) mes informations.
                             </span>
                         </label>
-                        <x-jet-input-error for="verified" class="mt-2" />
+                        <x-jet-input-error for="state.verified" class="mt-2" />
                     </div>
                 </x-slot>
 
