@@ -52,13 +52,13 @@
                             <!-- Profile Photo File Input -->
                             <input type="file" class="hidden" wire:model="photo" x-ref="photo"
                                 x-on:change="
-                                                                                                                                                                                                                                photoName = $refs.photo.files[0].name;
-                                                                                                                                                                                                                                const reader = new FileReader();
-                                                                                                                                                                                                                                reader.onload = (e) => {
-                                                                                                                                                                                                                                    photoPreview = e.target.result;
-                                                                                                                                                                                                                                };
-                                                                                                                                                                                                                                reader.readAsDataURL($refs.photo.files[0]);
-                                                                                                                                                                                                                        " />
+                                                                                                                                                                                                                                                            photoName = $refs.photo.files[0].name;
+                                                                                                                                                                                                                                                            const reader = new FileReader();
+                                                                                                                                                                                                                                                            reader.onload = (e) => {
+                                                                                                                                                                                                                                                                photoPreview = e.target.result;
+                                                                                                                                                                                                                                                            };
+                                                                                                                                                                                                                                                            reader.readAsDataURL($refs.photo.files[0]);
+                                                                                                                                                                                                                                                    " />
 
                             <x-jet-label for="photo" value="Photo" />
 
@@ -109,9 +109,9 @@
 
                     <!-- Bureau de vote -->
                     <div class="col-span-6 sm:col-span-4">
-                        <x-jet-label for="voting_station" value="Bureau de vote" />
+                        <x-jet-label for="voting_station" value="Bureau de vote / Département" />
                         <x-jet-input id="voting_station" type="text" class="mt-1 block w-full bg-gray-200"
-                            wire:model.defer="state.voting_station" readonly />
+                            wire:model.defer="state.voting_station" />
                         <x-jet-input-error for="state.voting_station" class="mt-2" />
                     </div>
 

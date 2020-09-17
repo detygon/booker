@@ -23,7 +23,7 @@ class AgentsTable extends TableComponent
                         ->orWhere('first_name', 'like', '%' . $term . '%')
                         ->orWhere('last_name', 'like', '%' . $term . '%');
             }),
-            Column::make('Bureau de vote', 'voting_station')->searchable(),
+            Column::make('Bureau de vote / Département', 'voting_station')->searchable(),
             Column::make('Téléphone', 'phone_number'),
             Column::make('Statut')->view('partials.agents._table-actions', 'agent'),
         ];
