@@ -26,6 +26,12 @@ Route::get('/comment-ca-marche', function () {
 
 Route::get('/verification', Verification::class)->name('verification');
 
-Route::get('/export', ExportAgents::class)->name('export.pdf.agents');
+Route::get('/export', ExportAgents::class)->name('export.agents');
+
+Route::get('/download-assets', [ExportAgents::class, 'exportAssets']);
+
+Route::get('/download-pdf', [ExportAgents::class, 'exportPDF']);
+
+Route::get('/download-csv', [ExportAgents::class, 'exportCSV']);
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', DashboardController::class)->name('dashboard');

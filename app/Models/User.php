@@ -17,6 +17,9 @@ class User extends Authenticatable
     use Notifiable;
     use TwoFactorAuthenticatable;
 
+    public const ROLE_ADMIN = 'admin';
+    public const ROLE_MEMBER = 'member';
+
     /**
      * The attributes that are mass assignable.
      *
@@ -57,4 +60,9 @@ class User extends Authenticatable
     protected $appends = [
         'profile_photo_url',
     ];
+
+    public function isAdmin(): bool
+    {
+        return $this->role === self::ROLE_ADMIN;
+    }
 }

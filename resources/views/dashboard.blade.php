@@ -46,10 +46,16 @@
             </div>
 
             <div>
-                <div class="flex justify-end my-2">
-                    <a class="px-4 py-3 bg-purple-600 font-semibold uppercase text-xs hover:bg-blue-400 rounded-lg text-white"
-                        href="{{ route('export.pdf.agents', ['download' => 'pdf']) }}">Exporter</a>
-                </div>
+                @if (Auth::user()->isAdmin())
+                    <div class="flex justify-end my-2 space-x-2">
+                        <a class="px-4 py-3 bg-purple-600 font-semibold uppercase text-xs hover:bg-blue-400 rounded-lg text-white"
+                            href="{{ route('export.agents', ['download' => 'csv']) }}">Export CSV</a>
+                        <a class="px-4 py-3 bg-purple-600 font-semibold uppercase text-xs hover:bg-blue-400 rounded-lg text-white"
+                            href="{{ route('export.agents', ['download' => 'assets']) }}">Export des images</a>
+                        <a class="px-4 py-3 bg-purple-600 font-semibold uppercase text-xs hover:bg-blue-400 rounded-lg text-white"
+                            href="{{ route('export.agents', ['download' => 'pdf']) }}">Export PDF</a>
+                    </div>
+                @endif
                 <livewire:agents-table>
             </div>
         </div>

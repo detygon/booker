@@ -16,13 +16,18 @@ class AgentsImport implements WithHeadingRow, OnEachRow
     public function onRow(Row $row)
     {
         $data = $row->toArray();
+
+        if (!$data['identifiant']) {
+            return;
+        }
+
         $nameParts = explode(' ', $data['nom']);
 
         return Agent::firstOrCreate(['code' => $data['identifiant']], [
             'phone_number' => $data["telephone"] ?? '',
-            'voting_station' => $data["bv"],
-            'first_name' => strtoupper(implode(' ', array_slice($nameParts, 1))),
-            'last_name' => strtoupper($nameParts[0]),
+            'voting_station' => $data["bv"] ?? '',
+            'first_name' => strtoupper(implode(' ', array_slice($nameParts, 1))) ?? '',
+            'last_name' => strtoupper($nameParts[0]) ?? '',
             'verified' => false,
             'verified_at' => now(),
         ]);
