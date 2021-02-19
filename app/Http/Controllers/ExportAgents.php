@@ -44,7 +44,7 @@ class ExportAgents
         $agents->each(function ($agent) {
             $imagePath = storage_path('app/public/' . $agent->profile_photo_path);
             $image = \Image::make($imagePath);
-            $image->save(public_path('agents/' . $agent->first_name . ' ' . $agent->last_name . '.' . File::extension($agent->profile_photo_path)));
+            $image->save(public_path('agents/' . $agent->code.'_'.$agent->first_name . ' ' . $agent->last_name . '.' . File::extension($agent->profile_photo_path)));
         });
 
         $zip = new \ZipArchive();
